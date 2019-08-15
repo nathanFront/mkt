@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home"><img src="../../assets/imagens/brq-digital-solutions.png" style="width:70px"
+            alt="logo da brq-digital-solutions"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="gerenciamento">Gerenciamento de Produtos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="solicitacao">Solicitacao de Produtos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Catalago de Produtos</a>
+            </li>
+        </ul>
+        <div class="dropdown" style="float: right; margin-right: 50px;">
+            <img class="usuario" src="../../assets/imagens/magali.png" style="width: 50px; border-radius: 10px" alt="foto do usuario">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false" style="margin-left: 15px;">
+                Magali Sangioto
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="login">Sair</a>
+                <a class="dropdown-item" href="#">Usuarios</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+    <div class="row" style="margin-left: 25px;  margin-top: 13px;">
+        <div class="col">
+            <input type="text" class="form-control" style="width: 170px;" placeholder="Consultar Produto">
+            <button class="btn btn-primary" type="button" style="margin-top: 10px;" (click)="busca()">Buscar</button>
+        </div>
+        </div>
+        <table class="table table-hover" style="margin-top: 20px; width: 100%;margin-left: 25px;">
+            <thead>
+                <tr>
+                    <th scope="col">Id do Produto</th>
+                    <th scope="col">Nome do Produto</th>
+                    <th scope="col">Quantidades</th>
+                    <th scope="col">Valor Unitario (R$)</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Camiseta Oda</td>
+                    <td>1231</td>
+                    <td>R$12,90</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Mala de vaigem</td>
+                    <td>23</td>
+                    <td>R$900,90</td>
+
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Toalha</td>
+                    <td>2412</td>
+                    <td>R$123.45</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example" style="margin-left: 25px;">
+                <ul class="pagination">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>

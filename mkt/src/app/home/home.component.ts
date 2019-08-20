@@ -1,4 +1,8 @@
+import { GerenciamentoService } from './../serviços/gerenciamentoService/gerenciamento.service';
+import { incluirProduto } from 'src/app/entidades/incluirProduto';
 import { Component, OnInit } from '@angular/core';
+import { log } from 'util';
+
 
 @Component({
   selector: 'app-home',
@@ -7,13 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  produtoBRQ: incluirProduto;
+  produtos: incluirProduto[];
+  
+  constructor(private prodServ:GerenciamentoService) { }
 
   ngOnInit() {
+    this.produtoBRQ = new incluirProduto();
+    this.produtosList();
   }
 
-  busca(){
-    
-    console.log("pesquisado");
+  produtosList(){
+    this.prodServ.buscarTodosProdutos()
+    .subscribe(
+      todosProdutos => this.produtos = todosProdutos[0],
+      error => console.log(error));
+  
   }
 }

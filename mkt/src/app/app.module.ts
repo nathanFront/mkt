@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
 import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
+import { CatalagoComponent } from './catalago/catalago.component';
 
 @NgModule({
   declarations: [
@@ -18,10 +21,13 @@ import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
     LoginComponent,
     HomeComponent,
     GerenciamentoComponent,
-    SolicitacaoComponent
+    SolicitacaoComponent,
+    CatalagoComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
+    FormsModule,
+    HttpClientModule,  
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),

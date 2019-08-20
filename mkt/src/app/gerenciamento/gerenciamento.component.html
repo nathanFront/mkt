@@ -60,31 +60,20 @@
             <th scope="col">Nome do Produto</th>
             <th scope="col">Quantidades</th>
             <th scope="col">Valor Unitario (R$)</th>
-
+            <th scope="col">Tamanho</th>
+            <th scope="col">Sexo</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Camiseta Oda</td>
-            <td>1231</td>
-            <td>R$12,90</td>
+        <tr *ngFor="let produtoBrq of produtos">
+            <th scope="row">{{produtoBrq.idProduto}}</th>
+            <td>{{produtoBrq.nomeProduto}}</td>
+            <td>{{produtoBrq.qntProduto}}</td>
+            <td>{{produtoBrq.valorUnitario}}</td>
+            <td>{{produtoBrq.tamanho}}</td>
+            <td>{{produtoBrq.sexo}}</td>
 
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Mala de vaigem</td>
-            <td>23</td>
-            <td>R$900,90</td>
-
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Toalha</td>
-            <td>2412</td>
-            <td>R$123.45</td>
-
-        </tr>
+        </tr>    
     </tbody>
 </table>
 
@@ -111,12 +100,18 @@
                         <div class="col">
                             <input type="text" class="form-control" placeholder="Valor Unitario">
                         </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="tamanho">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="sexo">
+                        </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="salvarAlteracao()">Salvar
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar
                     Alterações</button>
             </div>
         </div>
@@ -124,36 +119,42 @@
 </div>
 
 
-<!-- Modal Incluir -->
+<!-- Modal Incluir novos Produtos -->
 <div class="modal fade"  id="incluirProdutoModal" tabindex="-1" role="dialog" aria-labelledby="incluirProdutoModal"
     aria-hidden="true">
     <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="incluirProdutoModal">Incluir Produto</h5>
+                <h5 class="modal-title" id="incluirProdutoModal">Incluir Novos Produto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form>
-                    <div class="row">
+                     <div class="row">
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Nome do Produto">
+                            <input [(ngModel)]="prod.nomeProduto" name="nomeProduto" type="text" class="form-control" placeholder="Nome do Produto">
+                         </div> 
+                        <div class="col">
+                            <input [(ngModel)]="prod.qntProduto" name="qntProduto" type="number" class="form-control" placeholder="Quantidades">
                         </div>
                         <div class="col">
-                            <input type="number" class="form-control" placeholder="Quantidades">
+                            <input [(ngModel)]="prod.valorUnitario" name="valorUnitario" type="text" class="form-control" placeholder="Valor Unitario">
                         </div>
                         <div class="col">
-                            <input type="text" class="form-control" placeholder="Valor Unitario">
+                            <input [(ngModel)]="prod.tamanho" name="tamanho" type="text" class="form-control" placeholder="tamanho">
+                        </div>
+                        <div class="col">
+                            <input [(ngModel)]="prod.sexo" name="sexo" type="text" class="form-control" placeholder="sexo">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Fechar</button>
                 <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="salvarNovoProduto()">Salvar
-                    Alterações</button>
+                    Produto</button>
             </div>
         </div>
     </div>

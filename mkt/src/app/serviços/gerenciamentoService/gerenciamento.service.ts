@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { incluirProduto } from 'src/app/entidades/incluirProduto';
 import { Observable } from 'rxjs/';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
+import { EventEmitter } from 'events';
+import { incluirProduto } from 'src/app/entidades/incluirProduto';
 
 const httOptions = {
   headers: new HttpHeaders({
@@ -37,4 +38,6 @@ export class GerenciamentoService {
       .map(res => res)
       .catch(err => Observable.throw(err.messange));
   }
+
+
 }

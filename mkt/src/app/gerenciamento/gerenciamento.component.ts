@@ -10,7 +10,7 @@ import { incluirProduto } from '../entidades/incluirProduto';
 export class GerenciamentoComponent implements OnInit {
 
   prod: incluirProduto;
-
+  prodEdit: incluirProduto;
 
   produtos:incluirProduto[];
   
@@ -19,18 +19,20 @@ export class GerenciamentoComponent implements OnInit {
   ngOnInit() {
     this.prod = new incluirProduto();
     this.produtoList();
+    this.prodEdit = new incluirProduto();
     this.refreshProduto();
   }
 
   //função para salvar produtos
-  salvarNovoProduto() {
-    if (!this.validarCampos()) {
+  salvarNovoProduto(){
+    if(!this.validarCampos()) {
       this.prodServ.adicionarProduto(this.prod)
       .subscribe(
         produtos => this.adcProduto = produtos,
         error => console.error(error));
+        alert("Salvo com Sucesso");
       }else{
-        alert("Verifique os Campos")
+        alert("Verifique os Campos");
       }
       this.limparCampos();
      
@@ -42,8 +44,8 @@ export class GerenciamentoComponent implements OnInit {
       this.refreshProduto();
     }
 
-    //atualizar a table apos um novo cadastro
-    
+   
+    //LISTA DOS PRODUTOS ITAU
     refreshProduto(){
       this.prodServ.buscarTodosProdutos()
       .subscribe(
@@ -73,6 +75,7 @@ export class GerenciamentoComponent implements OnInit {
 
 
   limparCampos(){
+    this.prod.idProduto = 0;
     this.prod.nomeProduto = '';
     this.prod.qntProduto = null;
     this.prod.valorUnitario = null;
@@ -82,8 +85,22 @@ export class GerenciamentoComponent implements OnInit {
   }
 
 
+  //cancelar operação de inclusao
   cancelar(){
     this.limparCampos();
+  }
+
+  editarProduto(prodEdit: incluirProduto){
+    this.prod.idProduto = prodEdit.idProduto;
+    this.prod.nomeProduto = prodEdit.nomeProduto;
+    this.prod.qntProduto = prodEdit.qntProduto;
+    this.prod.sexo = prodEdit.sexo;
+    this.prod.tamanho = prodEdit.tamanho;
+    this.prod.valorUnitario = prodEdit.valorUnitario;
+  
+    this.prod = prodEdit;
+
+  this.refreshProduto();
   }
 
 }

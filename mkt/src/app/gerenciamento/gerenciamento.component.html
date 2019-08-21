@@ -38,20 +38,32 @@
 
 <h3 style="text-align: center; margin-top: 15px;">Gerenciamento de Produto</h3>
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary"
-    style=" margin-top: 20px; margin-left: 20px; background-color: transparent; background: transparent; border: 1px solid transparent;"
-    data-toggle="modal" data-target="#modalEditar">
-    <img style="width: 50px" src="../../assets/imagens/pencil.png" alt="editar produto">
-</button>
-<button type="button" class="btn btn-primary"
-    style=" margin-top: 20px; margin-left: 20px; background-color: transparent; background: transparent; border: 1px solid transparent;"
-    data-toggle="modal" data-target="#incluirProdutoModal">
-    <img style="width: 50px" src="../../assets/imagens/round-add-button.png" alt="adicionar produto">
-</button>
-<button type="button" class="btn btn-danger"
-    style=" margin-top: 20px; margin-left: 20px; background-color: transparent; background: transparent; border: 1px solid transparent;">
-    <img style="width: 50px" src="../../assets/imagens/recycling-bin.png" alt="deletar produto">
-</button>
+<form>
+<p style="margin-left: 35px">Novo Produto</p>
+    <div class="row" style="width: 1000px; margin-left: 19px;">
+       <div class="col">
+           <input [(ngModel)]="prod.idProduto" disabled name="idProduto" type="number" class="form-control" value="0" placeholder="0">
+        </div> 
+       <div class="col">
+           <input [(ngModel)]="prod.nomeProduto" name="nomeProduto" type="text" class="form-control" placeholder="Nome do Produto">
+        </div> 
+       <div class="col">
+           <input [(ngModel)]="prod.qntProduto" name="qntProduto" type="number" class="form-control" placeholder="Quantidades">
+       </div>
+       <div class="col">
+           <input [(ngModel)]="prod.valorUnitario" name="valorUnitario" type="text" class="form-control" placeholder="Valor Unitario">
+       </div>
+       <div class="col">
+           <input [(ngModel)]="prod.tamanho" name="tamanho" type="text" class="form-control" placeholder="tamanho">
+       </div>
+       <div class="col">
+           <input [(ngModel)]="prod.sexo" name="sexo" type="text" class="form-control" placeholder="sexo">
+       </div>
+    </div>
+    <button type="button" style="margin-top: 15px; margin-left: 35px;" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">limpar</button>
+    <button type="button"style="margin-top: 15px; margin-left: 15px;" class="btn btn-primary" data-dismiss="modal" (click)="salvarNovoProduto()">Salvar
+        Produto</button>
+</form>
 
 <table class="table table-hover" style="margin-top: 20px; width: 100%;margin-left: 25px;">
     <thead>
@@ -62,6 +74,8 @@
             <th scope="col">Valor Unitario (R$)</th>
             <th scope="col">Tamanho</th>
             <th scope="col">Sexo</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
         </tr>
     </thead>
     <tbody>
@@ -72,89 +86,30 @@
             <td>{{produtoBrq.valorUnitario}}</td>
             <td>{{produtoBrq.tamanho}}</td>
             <td>{{produtoBrq.sexo}}</td>
+            <td><button type="button" class="btn btn-danger"(click)="editarProduto(produtoBrq)">Editar</button></td>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#deletarProdutoModal"(click)="deletarProduto()">Deletar</button></td>
 
         </tr>    
     </tbody>
 </table>
 
-<!-- Modal Editar -->
-<div class="modal fade"  id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditar"
+<!-- Modal DELETAR -->
+<div class="modal fade"  id="deletarProdutoModal" tabindex="-1" role="dialog" aria-labelledby="deletarProdutoModal"
     aria-hidden="true">
     <div class="modal-dialog modal-lg"  role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditar">Editar Produto</h5>
+                <h5 class="modal-title" id="deletarProdutoModal">Deletar Produto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Nome do Produto">
-                        </div>
-                        <div class="col">
-                            <input type="number" class="form-control" placeholder="Quantidades">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Valor Unitario">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="tamanho">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="sexo">
-                        </div>
-                    </div>
-                </form>
+             <p>Tem Certeza que deseja Excluir ?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar
-                    Alterações</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal Incluir novos Produtos -->
-<div class="modal fade"  id="incluirProdutoModal" tabindex="-1" role="dialog" aria-labelledby="incluirProdutoModal"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg"  role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="incluirProdutoModal">Incluir Novos Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                     <div class="row">
-                        <div class="col">
-                            <input [(ngModel)]="prod.nomeProduto" name="nomeProduto" type="text" class="form-control" placeholder="Nome do Produto">
-                         </div> 
-                        <div class="col">
-                            <input [(ngModel)]="prod.qntProduto" name="qntProduto" type="number" class="form-control" placeholder="Quantidades">
-                        </div>
-                        <div class="col">
-                            <input [(ngModel)]="prod.valorUnitario" name="valorUnitario" type="text" class="form-control" placeholder="Valor Unitario">
-                        </div>
-                        <div class="col">
-                            <input [(ngModel)]="prod.tamanho" name="tamanho" type="text" class="form-control" placeholder="tamanho">
-                        </div>
-                        <div class="col">
-                            <input [(ngModel)]="prod.sexo" name="sexo" type="text" class="form-control" placeholder="sexo">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Fechar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="salvarNovoProduto()">Salvar
-                    Produto</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Não</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deletarProduto()">Sim</button>
             </div>
         </div>
     </div>

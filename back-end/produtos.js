@@ -15,8 +15,8 @@ router.post('/produtos/novos', function(req, res) {
 
     var connection = mysql.createConnection(config);
     
-    var sql = 'CALL insertProdutos(?,?,?,?,?)';
-        connection.query(sql,[req.body.nomeProduto, req.body.qntProduto, req.body.valorUnitario,req.body.tamanho, req.body.sexo], function(error, results, fields) {
+    var sql = 'CALL insertProdutos(?,?,?,?,?,?)';
+        connection.query(sql,[req.body.idProduto, req.body.nomeProduto, req.body.qntProduto, req.body.valorUnitario,req.body.tamanho, req.body.sexo], function(error, results, fields) {
         if (error) {
             return console.error(error.message);
         }

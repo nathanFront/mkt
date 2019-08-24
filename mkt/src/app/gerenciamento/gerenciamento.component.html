@@ -18,7 +18,7 @@
                 <a class="nav-link" href="solicitacao">Solicitacao de Produtos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Catalago de Produtos</a>
+                <a class="nav-link" href="pedidos">Pedidos Recebidos</a>
             </li>
         </ul>
         <div class="dropdown" style="float: right; margin-right: 50px;">
@@ -86,7 +86,7 @@
             <td>{{produtoBrq.valorUnitario}}</td>
             <td>{{produtoBrq.tamanho}}</td>
             <td>{{produtoBrq.sexo}}</td>
-            <td><button type="button" class="btn btn-danger"(click)="editarProduto(produtoBrq)">Editar</button></td>
+            <td><button type="button" class="btn btn-success"(click)="editarProduto(produtoBrq)">Editar</button></td>
             <td><button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#deletarProdutoModal"(click)="deletarProduto()">Deletar</button></td>
 
         </tr>    
@@ -109,7 +109,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Não</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="deletarProduto()">Sim</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sim()">Sim</button>
             </div>
         </div>
     </div>

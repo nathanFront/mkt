@@ -49,7 +49,7 @@ export class GerenciamentoComponent implements OnInit {
     refreshProduto(){
       this.prodServ.buscarTodosProdutos()
       .subscribe(
-        todosProdtuos => this.produtos = todosProdtuos[0],
+        todosProdutos => this.produtos = todosProdutos[0],
         error => console.error(error));   
       }
       
@@ -103,4 +103,7 @@ export class GerenciamentoComponent implements OnInit {
   this.refreshProduto();
   }
 
+  sim(){
+  alert("Deletado com sucesso") 
+  }
 }

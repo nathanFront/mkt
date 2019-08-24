@@ -13,7 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
 import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
-import { CatalagoComponent } from './catalago/catalago.component';
+import { PedidosComponent } from './pedidos/pedidos.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { CatalagoComponent } from './catalago/catalago.component';
     HomeComponent,
     GerenciamentoComponent,
     SolicitacaoComponent,
-    CatalagoComponent
+    PedidosComponent
   ],
   imports: [
     BrowserModule,    

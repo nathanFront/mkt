@@ -1,3 +1,4 @@
+import { Solicitacao } from './../../entidades/solicitarProduto';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/';
@@ -6,7 +7,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import { EventEmitter } from 'events';
-import { incluirProduto } from 'src/app/entidades/incluirProduto';
+
 
 const httOptions = {
   headers: new HttpHeaders({
@@ -15,31 +16,30 @@ const httOptions = {
 };
 
 var api = 'http://localhost:3000'
+
 @Injectable({
   providedIn: 'root'
 })
-export class GerenciamentoService {
 
+
+export class PedidosService {
 
   constructor(private HttpClient: HttpClient) { }
 
 
-  adicionarProduto(produto: incluirProduto): Observable<any> {
-    return this.HttpClient
-      .post(api+'/produtos/novos', produto, httOptions)
-      .map(res => res)
-      .catch(err => Observable.throw(err.message));
 
-  }
-
-  buscarTodosProdutos(): Observable<any> {
+  buscarTodosPedidos(): Observable<any> {
     return this.HttpClient
-      .get(api+'/produtos', httOptions)
+      .get(api+'/solicitacao', httOptions)
       .map(res => res)
       .catch(err => Observable.throw(err.messange));
   }
 
+  realizarPedido(pedidos: Solicitacao): Observable<any>{
+    return this.HttpClient
+    .post(api+'/solicitacao/nova',pedidos, httOptions )
+    .map(res => res)
+    .catch(err => Observable.throw(err.messange));
+  }
 
- 
-  
 }

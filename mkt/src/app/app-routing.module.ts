@@ -1,4 +1,4 @@
-import { CatalagoComponent } from './catalago/catalago.component';
+import { PedidosComponent } from '../app/pedidos/pedidos.component';
 import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'gerenciamento', component: GerenciamentoComponent},
   {path: 'login', component: LoginComponent},
   {path: 'solicitacao', component: SolicitacaoComponent},
-  {path: 'catalago', component: CatalagoComponent},
+  {path: 'pedidos', component: PedidosComponent},
   {path: '',
 
   redirectTo:'/login',

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home"><img src="../../assets/imagens/brq-digital-solutions.png" style="width:70px"
-            alt="logo da brq-digital-solutions"></a>
+    <a class="navbar-brand" href="solicitacao"><img src="../../assets/imagens/brq-digital-solutions.png"
+            style="width:70px" alt="logo da brq-digital-solutions"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -9,83 +9,80 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="home">Home</a>
-            </li>            
-            <li class="nav-item">
                 <a class="nav-link" href="solicitacao">Solicitacao de Produtos</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" style="display: none" href="catalago">Catalago de Produtos</a>
+                <a class="nav-link" style="display: none" href="pedidos">Pedidos Recebidos</a>
             </li>
         </ul>
-        <div class="dropdown" style="float: right; margin-right: 50px; display: none">
-            <img class="usuario" src="../../assets/imagens/magali.png" style="width: 50px; border-radius: 10px"
-                alt="foto do usuario">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" style="margin-left: 15px;">
-                Magali Sangioto
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="login">Sair</a>
-                <a class="dropdown-item" href="#">Usuarios</a>
-            </div>
-        </div>
     </div>
 </nav>
 
 <h3 style="text-align: center; margin-top: 15px;">Solicitação de Produto</h3>
 
-<div class="row" style="margin-left: 25px;  margin-top: 13px;">
-    <div class="col">
-        <input type="text" class="form-control" style="width: 170px;" placeholder="Consultar Produto">
-        <button class="btn btn-primary" type="button" style="margin-top: 10px;" (click)="busca()">Consultar Solicitao</button>
-    </div>
-</div>
-
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary"
-    style=" margin-top: 20px; margin-left: 20px; background-color: transparent; background: transparent; border: 1px solid transparent;"
-    data-toggle="modal" data-target="#modalSolicitar">
-    <img style="width: 35px;" src="../../assets/imagens/send.png" alt="editar produto">
-</button>
 
+<form>
+    <div class="row" style="width: 100%; margin: auto; margin-top: 10px">
+        <div class="col">
+            <input [(ngModel)]="solicitar.nomeSolicitante" name="nomeSolicitante" type="text" class="form-control"
+                placeholder="Nome do Solicitante">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="solicitar.nomeProduto" name="nomeProduto" type="text" class="form-control"
+                placeholder="Nome do Produto">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="solicitar.qntProduto" name="qntProduto" type="number" class="form-control"
+                placeholder="Quantidades">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="solicitar.centroCusto" name="centroCusto" type="text" class="form-control"
+                placeholder="Centro de Custo">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="solicitar.codProjeto" name="codProjeto" type="text" class="form-control"
+                placeholder="Codigo do Projeto">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="solicitar.valorUnitario" name="valorUnitario" type="text" class="form-control"
+                placeholder="Valor Unitario">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="solicitar.tamanho" name="tamanho" type="text" class="form-control"
+                placeholder="tamanho">
+        </div>
+        <div class="col">
+            <input [(ngModel)]="solicitar.sexo" name="sexo" type="text" class="form-control" placeholder="sexo">
+        </div>
+
+    </div>
+    <button style="margin-left: 20px; margin-top: 10px;" type="button" class="btn btn-primary" data-dismiss="modal"
+    (click)="enviarPedido()">Enviar
+    Pedido</button>
+</form>
+
+<h1 style="margin-left: 35px;">Produtos Disponiveis</h1>
 <table class="table table-hover" style="margin-top: 20px; width: 100%;margin-left: 25px;">
     <thead>
         <tr>
-            <th scope="col">Id da Solicitacao</th>
-            <th scope="col">Nome do Solicitante</th>
-            <th scope="col">Produto</th>
-            <th scope="col">Status da Solicitacao</th>
+            <th scope="col">Id do Produto</th>
+            <th scope="col">Nome do Produto</th>
+            <th scope="col">Quantidades</th>
+            <th scope="col">Valor Unitario (R$)</th>
+            <th scope="col">Tamanho</th>
+            <th scope="col">Sexo</th>
 
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Magali Sanioto</td>
-            <td>Mochila</td>
-            <td>Concluido</td>
-
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Magali Sanioto</td>
-            <td>Mochila</td>
-            <td>Em Andamento</td>
-
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Magali Sanioto</td>
-            <td>Mochila</td>
-            <td>Em Aprovação</td>
-
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Magali Sanioto</td>
-            <td>Mochila</td>
-            <td>Reprovado</td>
+        <tr *ngFor="let produto of produtos">
+            <th scope="row">{{produto.idProduto}}</th>
+            <td>{{produto.nomeProduto}}</td>
+            <td>{{produto.qntProduto}}</td>
+            <td>{{produto.valorUnitario}}</td>
+            <td>{{produto.tamanho}}</td>
+            <td>{{produto.sexo}}</td>
 
         </tr>
     </tbody>
@@ -94,49 +91,16 @@
 
 
 
-<!-- Modal Editar -->
-<div class="modal fade" id="modalSolicitar" tabindex="-1" role="dialog" aria-labelledby="modalSolicitar"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalSolicitar">Solicitar Produto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
+<!-- <div class="modal-body">
                 <form>
-                    <div class="row">
-                        <div class="col">
-                            <input type="text" class="form-control" placeholder="Nome do Produto">
-                        </div>
-                        <div class="col">
-                            <input type="number" class="form-control" placeholder="Quantidades">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control"  placeholder="centro de custo">
-                        </div>
-                        <div class="col">
-                            <input type="text" class="form-control" disabled placeholder="12,50">
-                        </div>
-                    </div>
-                    <div class="form-group col-md-4" style=" margin-left: -17px; margin-top: 11px;">          
-                                    
-                        <select id="inputState" class="form-control">
-                            <option selected>selecione o produto</option>
-                            <option>Mochila</option>
-                            <option>Caneca</option>
-                            <option>Camiseta</option>
-                        </select>
-                    </div>
+                    
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="salvarAlteracao()">Salvar
-                    Alterações</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="enviarPedido()">Enviar
+                    Pedido</button>
             </div>
         </div>
     </div>
-</div>
+</div> -->

@@ -29,6 +29,28 @@ router.post('/produtos/novos', function(req, res) {
         connection.end();
 });
 
+//insert de SOLICITAÇÃO
+
+router.post('/solicitacao/nova', function(req, res) {
+
+    var connection = mysql.createConnection(config);
+    
+    var sql = 'CALL solicitacaoPedidos(?,?,?,?,?,?,?,?)';
+        connection.query(sql,[req.body.nomeSolicitante, req.body.nomeProduto, req.body.qntProduto, req.body.centroCusto, req.body.codProjeto, req.body.valorUnitario,req.body.tamanho, req.body.sexo], function(error, results, fields) {
+        if (error) {
+            return console.error(error.message);
+        }
+            res.send(results);
+        })
+        connection.on('error', function(err){
+            console.log("[mysql erro]", err);
+            
+        });
+        connection.end();
+
+    });
+
+
 
 //GET
 
@@ -44,11 +66,59 @@ router.get('/produtos', function(req, res){
         }
         res.send(results);
     });
+   
+    connection.end();
+});
+
+//GEL FOR ID
+//EX PRODUTO/1
+router.get('/produtos/:id', function(req, res){
+
+    var connection = mysql.createConnection(config);
+    var sql = 'CALL getProdutos(?)';
+    connection.query(sql,[req.params.idProduto], function(error, results, fields) {
+        if(error){
+            return console.error(error.message);
+        }
+        res.send(results);
+    });
+   
     connection.end();
 });
 
 
+//Delete FOR ID
+//PRODUTOS/1
+router.delete('/produtos/:id', function(req, res){
+    var connection = mysql.createConnection(config);
+    var sql = 'CALL deleteProdutos(?)';
+    connection.query(sql, [req.params.idProduto], function (error, results, fields){
+        if(error){
+            return console.error(error.message);
+        }
+        res.send(results);
+    });
+    connection.on('error', function(err){
+        console.log("[mysql erro]", err);
+    });
+    connection.end();
+})
 
+
+
+    router.get('/solicitacao', function(req, res){
+
+        var connection = mysql.createConnection(config);
+        var sql = 'CALL getSolicitacao()';
+        connection.query(sql, (error, results, fields) =>{
+            if(error){
+                return console.error(error.message);
+            }
+            res.send(results);
+        });
+       
+        connection.end();
+    });
 module.exports = router;
 
 

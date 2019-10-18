@@ -13,26 +13,11 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="gerenciamento">Gerenciamento de Produtos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="solicitacao">Solicitacao de Produtos</a>
-            </li>
+            </li>            
             <li class="nav-item">
                 <a class="nav-link" href="pedidos">Pedidos Recebidos</a>
             </li>
-        </ul>
-        <div class="dropdown" style="float: right; margin-right: 50px;">
-            <img class="usuario" src="../../assets/imagens/magali.png" style="width: 50px; border-radius: 10px"
-                alt="foto do usuario">
-            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false" style="margin-left: 15px;">
-                Magali Sangioto
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="login">Sair</a>
-                <a class="dropdown-item" href="#">Usuarios</a>
-            </div>
-        </div>
+        </ul>        
     </div>
 </nav>
 
@@ -59,6 +44,12 @@
        <div class="col">
            <input [(ngModel)]="prod.sexo" name="sexo" type="text" class="form-control" placeholder="sexo">
        </div>
+       <div class="input-group" style="width: 100%; margin-top: 10px; margin-left: 16px;">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Observação</span>
+  </div>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+</div>
     </div>
     <button type="button" style="margin-top: 15px; margin-left: 35px;" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">limpar</button>
     <button type="button"style="margin-top: 15px; margin-left: 15px;" class="btn btn-primary" data-dismiss="modal" (click)="salvarNovoProduto()">Salvar
@@ -87,8 +78,6 @@
             <td>{{produtoBrq.tamanho}}</td>
             <td>{{produtoBrq.sexo}}</td>
             <td><button type="button" class="btn btn-success"(click)="editarProduto(produtoBrq)">Editar</button></td>
-            <td><button type="button" class="btn btn-danger" data-toggle="modal"  data-target="#deletarProdutoModal"(click)="deletarProduto()">Deletar</button></td>
-
         </tr>    
     </tbody>
 </table>

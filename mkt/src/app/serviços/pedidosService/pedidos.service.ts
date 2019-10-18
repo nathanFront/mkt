@@ -15,7 +15,7 @@ const httOptions = {
   })
 };
 
-var api = 'http://localhost:3000'
+var api = 'http://10.2.1.124:3000'
 
 @Injectable({
   providedIn: 'root'

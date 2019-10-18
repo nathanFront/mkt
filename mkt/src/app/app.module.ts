@@ -9,7 +9,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { GerenciamentoComponent } from './gerenciamento/gerenciamento.component';
 import { SolicitacaoComponent } from './solicitacao/solicitacao.component';
@@ -18,8 +17,7 @@ import { PedidosComponent } from './pedidos/pedidos.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    HomeComponent,
+     HomeComponent,
     GerenciamentoComponent,
     SolicitacaoComponent,
     PedidosComponent

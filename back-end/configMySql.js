@@ -1,8 +1,8 @@
 let config ={
-    host: '127.0.0.1',
-    user: 'scfadmin',
-    password: 'scf@001',
-    database: 'estoqueMkt'
+    host: '10.2.1.124',
+    user: 'portalmkt',
+    password: 'portak@mkt',
+    database: 'portalmkt'
 
 };
 

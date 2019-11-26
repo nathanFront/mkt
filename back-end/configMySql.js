@@ -1,8 +1,8 @@
-let config ={
-    host: '10.2.1.124',
-    user: 'portalmkt',
-    password: 'portak@mkt',
-    database: 'portalmkt'
+let config = {
+    host: 'localhost',
+    user: 'root',
+    password: 'brq@sp',
+    database: 'portal_mkt'
 
 };
 

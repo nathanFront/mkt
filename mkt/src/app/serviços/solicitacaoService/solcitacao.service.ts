@@ -1,4 +1,4 @@
-import { Solicitacao } from './../../entidades/solicitarProduto';
+import { Solicitacao } from '../../entidades/Pedidos';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/';
@@ -14,7 +14,7 @@ const httOptions = {
   })
 };
 
-var api = 'http://10.2.1.124:3000'
+var api = 'http://localhost:3000'
 
 @Injectable({
   providedIn: 'root'

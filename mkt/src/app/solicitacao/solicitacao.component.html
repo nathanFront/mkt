@@ -1,86 +1,63 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="solicitacao"><img src="../../assets/imagens/brq-digital-solutions.png"
-            style="width:70px" alt="logo da brq-digital-solutions"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="solicitacao">Solicitacao de Produtos</a>
-            </li>            
-        </ul>
-    </div>
-</nav>
-
-<h3 style="text-align: center; margin-top: 15px;">Solicitação de Produto</h3>
+<h3 style="text-align: center; margin-top: 15px;">
+    Solicitação de Produto</h3>
 
 <!-- Button trigger modal -->
 
 <form>
     <div class="row" style="width: 100%; margin: auto; margin-top: 10px">
         <div class="col">
-            <input [(ngModel)]="solicitar.nomeSolicitante" name="nomeSolicitante" type="text" class="form-control"
-                placeholder="Nome do Solicitante">
+            <input [(ngModel)]="solicitar.nomeGestor" name="nomeSolicitante" type="text" class="form-control" placeholder="Nome do Solicitante">
         </div>
         <div class="col">
-            <input [(ngModel)]="solicitar.nomeProduto" name="nomeProduto" type="text" class="form-control"
-                placeholder="Nome do Produto">
+            <input [(ngModel)]="solicitar.nomeSolic" name="nomeSolicitante" type="text" class="form-control" placeholder="Nome do Solicitante">
         </div>
         <div class="col">
-            <input [(ngModel)]="solicitar.qntProduto" name="qntProduto" type="number" class="form-control"
-                placeholder="Quantidades">
+            <input [(ngModel)]="solicitar.nomeProduto" name="nomeProduto" type="text" class="form-control" placeholder="Nome do Produto">
         </div>
         <div class="col">
-            <input [(ngModel)]="solicitar.centroCusto" name="centroCusto" type="text" class="form-control"
-                placeholder="Centro de Custo">
+            <input [(ngModel)]="solicitar.qntProduto" name="qntProduto" type="number" class="form-control" placeholder="Quantidades">
         </div>
         <div class="col">
-            <input [(ngModel)]="solicitar.codProjeto" name="codProjeto" type="text" class="form-control"
-                placeholder="Codigo do Projeto">
+            <input [(ngModel)]="solicitar.centroCusto" name="centroCusto" type="text" class="form-control" placeholder="Centro de Custo">
         </div>
         <div class="col">
-            <input [(ngModel)]="solicitar.valorUnitario" name="valorUnitario" type="text" class="form-control"
-                placeholder="Valor Unitario">
+            <input [(ngModel)]="solicitar.codProj" name="codProjeto" type="text" class="form-control" placeholder="Codigo do Projeto">
         </div>
         <div class="col">
-            <input [(ngModel)]="solicitar.tamanho" name="tamanho" type="text" class="form-control"
-                placeholder="tamanho">
+            <input [(ngModel)]="solicitar.modelo" name="tamanho" type="text" class="form-control" placeholder="tamanho">
         </div>
         <div class="col">
-            <input [(ngModel)]="solicitar.sexo" name="sexo" type="text" class="form-control" placeholder="sexo">
+            <input [(ngModel)]="solicitar.genero" name="sexo" type="text" class="form-control" placeholder="sexo">
         </div>
 
     </div>
-    <button style="margin-left: 20px; margin-top: 10px;" type="button" class="btn btn-primary" data-dismiss="modal"
-    (click)="enviarPedido()">Enviar
+    <button style="margin-left: 20px; margin-top: 10px;" type="button" class="btn btn-dark" data-dismiss="modal" (click)="enviarPedido()">Enviar
     Pedido</button>
 </form>
 
-<h1 style="margin-left: 35px;">Produtos Disponiveis</h1>
+<h1 style="margin-left: 35px; text-align: center;">Produtos Disponiveis</h1>
 <table class="table table-hover" style="margin-top: 20px; width: 100%;margin-left: 25px;">
-    <thead>
+    <thead class="thead-dark">
         <tr>
-            <th scope="col">Id do Produto</th>
+            <th scope="col">#</th>
             <th scope="col">Nome do Produto</th>
             <th scope="col">Quantidades</th>
             <th scope="col">Valor Unitario (R$)</th>
-            <th scope="col">Tamanho</th>
-            <th scope="col">Sexo</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Tipo do Produto</th>
+            <th scope="col">Modelo</th>
 
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let produto of produtos">
+        <tr *ngFor="let produto of pedidos">
             <th scope="row">{{produto.idProduto}}</th>
-            <td>{{produto.nomeProduto}}</td>
-            <td>{{produto.qntProduto}}</td>
-            <td>{{produto.valorUnitario}}</td>
-            <td>{{produto.tamanho}}</td>
-            <td>{{produto.sexo}}</td>
-
+            <td>{{produto.nomeProd}}</td>
+            <td>{{produto.qntProd}}</td>
+            <td>{{produto.valorUnit}}</td>
+            <td>{{produto.genero}}</td>
+            <td>{{produto.tipoProd}}</td>
+            <td>{{produto.modeloProd}}</td>
         </tr>
     </tbody>
 </table>

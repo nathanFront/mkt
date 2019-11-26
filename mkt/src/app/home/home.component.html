@@ -1,37 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home"><img src="../../assets/imagens/brq-digital-solutions.png" style="width:70px"
-            alt="logo da brq-digital-solutions"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="gerenciamento">Gerenciamento de Produtos</a>
-            </li>           
-            <li class="nav-item">
-                <a class="nav-link" href="pedidos">Pedidos Recebidos</a>
-            </li>
-        </ul>       
-    </div>
-</nav>
-
-
-
-
+<h2 class="home">Bem Vindo ao Portal do Marketing<br>Home</h2>
 <div class="row" style="margin-left: 25px;  margin-top: 13px;">
     <div class="col">
-        <input type="text" class="form-control" style="width: 170px;" placeholder="Consultar Produto">
-        <button class="btn btn-primary" type="button" style="margin-top: 10px;">Buscar</button>
+        <input type="text" class="form-control" placeholder="Consultar Produto">
+        <button class="btn btn-dark" type="button">Buscar</button>
     </div>
 </div>
-<table class="table table-hover" style="margin-top: 20px; width: 100%;margin-left: 25px;">
-    <thead>
+<table class="table table-hover">
+    <thead class="thead-dark">
         <tr>
             <th scope="col">Id do Produto</th>
             <th scope="col">Nome do Produto</th>
@@ -39,19 +14,19 @@
             <th scope="col">Valor Unitario (R$)</th>
             <th scope="col">Tamanho</th>
             <th scope="col">Sexo</th>
-            
+
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let produto of produtos">
             <th scope="row">{{produto.idProduto}}</th>
-            <td>{{produto.nomeProduto}}</td>
-            <td>{{produto.qntProduto}}</td>
-            <td>{{produto.valorUnitario}}</td>
-            <td>{{produto.tamanho}}</td>
-            <td>{{produto.sexo}}</td>
-            
-        </tr>        
+            <td>{{produto.nomeProd}}</td>
+            <td>{{produto.qntProd}}</td>
+            <td>{{produto.valorUnit}}</td>
+            <td>{{produto.modeloProd}}</td>
+            <td>{{produto.genero}}</td>
+
+        </tr>
     </tbody>
 </table>
 

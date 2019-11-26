@@ -1,0 +1,30 @@
+.textGen {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.newProd {
+    margin-left: 35px;
+}
+
+.row {
+    width: 1000px;
+    margin-left: 19px;
+}
+
+.table {
+    margin-top: 20px;
+    width: 95%;
+    margin: auto;
+}
+
+.btn {
+    margin-bottom: 10px;
+    margin-top: 15px;
+    margin-left: 35px;
+}
+
+.form-control {
+    width: auto;
+    margin-top: 10px;
+}

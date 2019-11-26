@@ -1,5 +1,5 @@
 import { GerenciamentoService } from './../serviços/gerenciamentoService/gerenciamento.service';
-import { incluirProduto } from 'src/app/entidades/incluirProduto';
+import { Produtos } from 'src/app/entidades/Produtos';
 import { Component, OnInit } from '@angular/core';
 import { log } from 'util';
 
@@ -11,13 +11,13 @@ import { log } from 'util';
 })
 export class HomeComponent implements OnInit {
 
-  produtoBRQ: incluirProduto;
-  produtos: incluirProduto[];
+  produtoBRQ: Produtos;
+  produtos: Produtos[];
   
   constructor(private prodServ:GerenciamentoService) { }
 
   ngOnInit() {
-    this.produtoBRQ = new incluirProduto();
+    this.produtoBRQ = new Produtos();
     this.produtosList();
   }
 

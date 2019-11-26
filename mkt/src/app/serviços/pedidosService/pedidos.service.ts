@@ -1,4 +1,4 @@
-import { Solicitacao } from './../../entidades/solicitarProduto';
+import { Solicitacao } from '../../entidades/Pedidos';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/';
@@ -15,7 +15,7 @@ const httOptions = {
   })
 };
 
-var api = 'http://10.2.1.124:3000'
+var api = 'http://localhost:3000'
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +30,14 @@ export class PedidosService {
 
   buscarTodosPedidos(): Observable<any> {
     return this.HttpClient
-      .get(api+'/solicitacao', httOptions)
+      .get( api +'/pedidos', httOptions)
       .map(res => res)
       .catch(err => Observable.throw(err.messange));
   }
 
   realizarPedido(pedidos: Solicitacao): Observable<any>{
     return this.HttpClient
-    .post(api+'/solicitacao/nova',pedidos, httOptions )
+    .post(api +'/pedidos/novos',pedidos, httOptions )
     .map(res => res)
     .catch(err => Observable.throw(err.messange));
   }

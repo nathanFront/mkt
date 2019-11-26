@@ -6,7 +6,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/take';
 import 'rxjs/add/operator/map';
 import { EventEmitter } from 'events';
-import { incluirProduto } from 'src/app/entidades/incluirProduto';
+import { Produtos } from 'src/app/entidades/Produtos';
+import { url } from 'inspector';
 
 const httOptions = {
   headers: new HttpHeaders({
@@ -14,19 +15,27 @@ const httOptions = {
   })
 };
 
-var api = 'http://10.2.1.124:3000'
-@Injectable({
+ @Injectable({
   providedIn: 'root'
 })
 export class GerenciamentoService {
+  url = 'http://localhost:3000';
 
+idProduto: Produtos;
 
   constructor(private HttpClient: HttpClient) { }
 
+  // Http Headers
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json'
+    })
+  }
 
-  adicionarProduto(produto: incluirProduto): Observable<any> {
+
+  adicionarProduto(produto: Produtos): Observable<any> {   
     return this.HttpClient
-      .post(api+'/produtos/novos', produto, httOptions)
+      .post(this.url + '/produtos/novos', produto, this.httpOptions)
       .map(res => res)
       .catch(err => Observable.throw(err.message));
 
@@ -34,12 +43,20 @@ export class GerenciamentoService {
 
   buscarTodosProdutos(): Observable<any> {
     return this.HttpClient
-      .get(api+'/produtos', httOptions)
+      .get(this.url +'/produtos', this.httpOptions)
       .map(res => res)
       .catch(err => Observable.throw(err.messange));
   }
 
-
+  deletarProduto(idProduto:number): Observable<any> {
+    debugger;
+    return this.HttpClient
+    .delete(this.url + '/delete/'+ idProduto, this.httpOptions)
+    .map(res => res)
+    .catch(err => Observable.throw(err.message));
+  
+    
+  }
  
   
 }

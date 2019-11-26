@@ -1,53 +1,27 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home"><img src="../../assets/imagens/brq-digital-solutions.png" style="width:70px"
-            alt="logo da brq-digital-solutions"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="gerenciamento">Gerenciamento de Produtos</a>
-            </li>            
-            <li class="nav-item">
-                <a class="nav-link" href="pedidos">Pedidos Recebidos</a>
-            </li>
-        </ul>       
-    </div>
-</nav>
-
-<h2 style="margin-left: 35px;">Pedidos Recebidos</h2>
-<table class="table table-hover" style="margin-top: 20px; width: 100%;margin-left: 25px;">
-    <thead>
+<h2 style="margin-left: 35px; text-align: center; margin-top: 10px;">Pedidos Recebidos</h2>
+<table class="table">
+    <thead class="thead-dark">
         <tr>
-            <th scope="col">Nº do Pedido</th>
+            <th scope="col">#</th>
+            <th scope="col">Nome do Gestor</th>
             <th scope="col">Nome do Solicitante</th>
-            <th scope="col">Produto</th>
-            <th scope="col">Quantidade</th>
             <th scope="col">Centro de Custo</th>
-            <th scope="col">Codigo do Proejeot</th>
-            <th scope="col">Valor Unitario</th>
-            <th scope="col">Tamanho</th>
-            <th scope="col">Sexo</th>
-
+            <th scope="col">Codigo do Proejeto</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Modelo</th>
         </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let recebidos of pedRecebidos">
-            <th scope="row">{{recebidos.idPedido}}</th>
-            <td>{{recebidos.nomeSolicitante}}</td>
-            <td>{{recebidos.nomeProduto}}</td>
-            <td>{{recebidos.qntProduto}}</td>
-            <td>{{recebidos.centroCusto}}</td>
-            <td>{{recebidos.codProjeto}}</td>
-            <td>{{recebidos.valorUnitario}}</td>
-            <td>{{recebidos.tamanho}}</td>
-            <td>{{recebidos.sexo}}</td>
-        </tr>     
+        <tr *ngFor="let pedido of pedidos">
+            <th>{{pedido.idPedido}}</th>
+            <td>{{pedido.nomeGestor}}</td>
+            <td>{{pedido.nomeSolic}}</td>
+            <td>{{pedido.codProj}}</td>
+            <td>{{pedido.centroCusto}}</td>
+            <td>{{pedido.qntProduto}}</td>
+            <td>{{pedido.genero}}</td>
+            <td>{{pedido.modelo}}</td>
+        </tr>
     </tbody>
 </table>

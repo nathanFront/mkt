@@ -1,6 +1,6 @@
-import { Solicitacao } from './../entidades/solicitarProduto';
+import { Solicitacao } from '../entidades/Pedidos';
 import { Component, OnInit } from '@angular/core';
-import { incluirProduto } from 'src/app/entidades/incluirProduto';
+import { Produtos } from 'src/app/entidades/Produtos';
 import { GerenciamentoService } from './../serviços/gerenciamentoService/gerenciamento.service';
 import { PedidosService } from '../serviços/pedidosService/pedidos.service';
 
@@ -15,8 +15,8 @@ export class SolicitacaoComponent implements OnInit {
   constructor(private prodServ:GerenciamentoService, private pedidosServ: PedidosService) { }
   
   //traz todos os produtos disponiveis
-  produtoBRQ: incluirProduto;
-  produtos: incluirProduto[];
+  produtoBRQ: Produtos;
+  pedidos: Produtos[];
 
   
   solicitar: Solicitacao;  
@@ -24,7 +24,7 @@ export class SolicitacaoComponent implements OnInit {
   pedidosRealizados: Solicitacao[];
 
   ngOnInit() {
-    this.produtoBRQ = new incluirProduto();
+    this.produtoBRQ = new Produtos();
     this.produtosList();
     this.solicitar = new Solicitacao();
      this.refreshPedido();
@@ -33,7 +33,7 @@ export class SolicitacaoComponent implements OnInit {
   produtosList(){
     this.prodServ.buscarTodosProdutos()
     .subscribe(
-      todosProdutos => this.produtos = todosProdutos[0],
+      todosProdutos => this.pedidos = todosProdutos[0],
       error => console.log(error));
   
   }
@@ -67,26 +67,25 @@ export class SolicitacaoComponent implements OnInit {
 
   validarCampos(){
 
-    return this.solicitar.nomeSolicitante == '' ||
-           this.solicitar.nomeProduto === '' ||
+    return this.solicitar.nomeGestor == '' ||
+           this.solicitar.nomeSolic === '' ||
           this.solicitar.qntProduto === null ||
           this.solicitar.centroCusto === ''||
-          this.solicitar.codProjeto == '' ||
-          this.solicitar.sexo === '' ||
-          this.solicitar.tamanho === '' ||
-          this.solicitar.valorUnitario === null;
+          this.solicitar.codProj == '' ||
+          this.solicitar.genero=== '' ||
+          this.solicitar.modelo === '';
+         
   }
 
 
   limparCampos(){
-    this.solicitar.nomeSolicitante = '';
-    this.solicitar.nomeProduto = '';
-    this.solicitar.qntProduto = null;
-    this.solicitar.centroCusto = '';
-    this.solicitar.codProjeto = '';
-    this.solicitar.valorUnitario = null;
-    this.solicitar.sexo = null;
-    this.solicitar.tamanho = null;
+    this.solicitar.nomeGestor == '' ||
+    this.solicitar.nomeSolic === '' ||
+   this.solicitar.qntProduto === null ||
+   this.solicitar.centroCusto === ''||
+   this.solicitar.codProj == '' ||
+   this.solicitar.genero=== '' ||
+   this.solicitar.modelo === '' ||
     this.refreshPedido();
   }
 }

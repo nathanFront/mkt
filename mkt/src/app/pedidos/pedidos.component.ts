@@ -1,4 +1,4 @@
-import { Solicitacao } from './../entidades/solicitarProduto';
+import { Solicitacao } from '../entidades/Pedidos';
 import { Component, OnInit } from '@angular/core';
 import { PedidosService } from '../serviços/pedidosService/pedidos.service';
 
@@ -9,19 +9,20 @@ import { PedidosService } from '../serviços/pedidosService/pedidos.service';
 })
 export class PedidosComponent implements OnInit {
 
+    
+    pedidos:Solicitacao[];
+
   constructor(private recebServ: PedidosService) { }
 
-  
-  pedRecebidos: Solicitacao[];
-
   ngOnInit() {
+ 
     this.produtosList();
   }
 
   produtosList(){
     this.recebServ.buscarTodosPedidos()
     .subscribe(
-      todosProdutos => this.pedRecebidos = todosProdutos[0],
+      todosPedidos => this.pedidos = todosPedidos[0],
       error => console.log(error));
   
   }

@@ -1,91 +1,67 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="home"><img src="../../assets/imagens/brq-digital-solutions.png" style="width:70px"
-            alt="logo da brq-digital-solutions"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="gerenciamento">Gerenciamento de Produtos</a>
-            </li>            
-            <li class="nav-item">
-                <a class="nav-link" href="pedidos">Pedidos Recebidos</a>
-            </li>
-        </ul>        
-    </div>
-</nav>
-
-<h3 style="text-align: center; margin-top: 15px;">Gerenciamento de Produto</h3>
+<h3 class="textGen">Gerenciamento de Produto</h3>
 <!-- Button trigger modal -->
 <form>
-<p style="margin-left: 35px">Novo Produto</p>
-    <div class="row" style="width: 1000px; margin-left: 19px;">
-       <div class="col">
-           <input [(ngModel)]="prod.idProduto" disabled name="idProduto" type="number" class="form-control" value="0" placeholder="0">
-        </div> 
-       <div class="col">
-           <input [(ngModel)]="prod.nomeProduto" name="nomeProduto" type="text" class="form-control" placeholder="Nome do Produto">
-        </div> 
-       <div class="col">
-           <input [(ngModel)]="prod.qntProduto" name="qntProduto" type="number" class="form-control" placeholder="Quantidades">
-       </div>
-       <div class="col">
-           <input [(ngModel)]="prod.valorUnitario" name="valorUnitario" type="text" class="form-control" placeholder="Valor Unitario">
-       </div>
-       <div class="col">
-           <input [(ngModel)]="prod.tamanho" name="tamanho" type="text" class="form-control" placeholder="tamanho">
-       </div>
-       <div class="col">
-           <input [(ngModel)]="prod.sexo" name="sexo" type="text" class="form-control" placeholder="sexo">
-       </div>
-       <div class="input-group" style="width: 100%; margin-top: 10px; margin-left: 16px;">
-  <div class="input-group-prepend">
-    <span class="input-group-text">Observação</span>
-  </div>
-  <textarea class="form-control" aria-label="With textarea"></textarea>
-</div>
+    <h4 class="newProd">Novo Produto</h4>
+    <div class="row">
+        <div class="col">
+            <input [(ngModel)]="prod.idProduto" disabled name="idProduto" type="number" class="form-control" value="0" placeholder="0">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="prod.nomeProd" name="nomeProduto" type="text" class="form-control" placeholder="Nome do Produto">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="prod.qntProd" name="qntProduto" type="number" class="form-control" placeholder="Quantidades">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="prod.valorUnit" name="valorUnitario" type="text" class="form-control" placeholder="Valor Unitario">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="prod.genero" name="genero" type="text" class="form-control" placeholder="genero">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="prod.tipoProd" name="tipoProd" type="text" class="form-control" placeholder="tipo de produto">
+        </div>
+        <div class="col-3">
+            <input [(ngModel)]="prod.modeloProd" name="modelo do produto" type="text" class="form-control" placeholder="modelo do produto">
+        </div>
+
     </div>
-    <button type="button" style="margin-top: 15px; margin-left: 35px;" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">limpar</button>
-    <button type="button"style="margin-top: 15px; margin-left: 15px;" class="btn btn-primary" data-dismiss="modal" (click)="salvarNovoProduto()">Salvar
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">limpar</button>
+    <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="salvarNovoProduto()">Salvar
         Produto</button>
 </form>
-
-<table class="table table-hover" style="margin-top: 20px; width: 100%;margin-left: 25px;">
-    <thead>
-        <tr>
-            <th scope="col">Id do Produto</th>
-            <th scope="col">Nome do Produto</th>
-            <th scope="col">Quantidades</th>
-            <th scope="col">Valor Unitario (R$)</th>
-            <th scope="col">Tamanho</th>
-            <th scope="col">Sexo</th>
-            <th scope="col">Editar</th>
-            <th scope="col">Excluir</th>
+<table class="table">
+    <thead class="thead-dark">
+        <tr style="text-align: center;">
+            <th>Id do Produto</th>
+            <th>Nome do Produto</th>
+            <th>Quantidades</th>
+            <th>Valor Unitario (R$)</th>
+            <th>Genero</th>
+            <th>Tipo de Produto</th>
+            <th>Modelo do Produto</th>
+            <th>Editar</th>
+            <th>Excluir</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let produtoBrq of produtos">
             <th scope="row">{{produtoBrq.idProduto}}</th>
-            <td>{{produtoBrq.nomeProduto}}</td>
-            <td>{{produtoBrq.qntProduto}}</td>
-            <td>{{produtoBrq.valorUnitario}}</td>
-            <td>{{produtoBrq.tamanho}}</td>
-            <td>{{produtoBrq.sexo}}</td>
-            <td><button type="button" class="btn btn-success"(click)="editarProduto(produtoBrq)">Editar</button></td>
-        </tr>    
+            <td>{{produtoBrq.nomeProd}}</td>
+            <td>{{produtoBrq.qntProd}}</td>
+            <td>{{produtoBrq.valorUnit}}</td>
+            <td>{{produtoBrq.genero}}</td>
+            <td>{{produtoBrq.tipoProd}}</td>
+            <td>{{produtoBrq.modeloProd}}</td>
+            <td><button type="button" class="btn btn-success" (click)="editarProduto(produtoBrq)">Editar</button></td>
+            <td><button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletarProdutoModal" (click)="excluir(produtoBrq)">Excluir</button></td>
+        </tr>
     </tbody>
 </table>
 
 <!-- Modal DELETAR -->
-<div class="modal fade"  id="deletarProdutoModal" tabindex="-1" role="dialog" aria-labelledby="deletarProdutoModal"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg"  role="document">
+<div class="modal fade" id="deletarProdutoModal" tabindex="-1" role="dialog" aria-labelledby="deletarProdutoModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="deletarProdutoModal">Deletar Produto</h5>
@@ -94,11 +70,11 @@
                 </button>
             </div>
             <div class="modal-body">
-             <p>Tem Certeza que deseja Excluir ?</p>
+                <p>Tem Certeza que deseja Excluir ?</p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancelar()">Não</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sim()">Sim</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="sim(produtoBrq)">Sim</button>
             </div>
         </div>
     </div>

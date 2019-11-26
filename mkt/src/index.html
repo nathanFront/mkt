@@ -2,20 +2,48 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Portal Marketing</title>
-  <base href="/">
+    <meta charset="utf-8">
+    <title>Portal Marketing</title>
+    <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 <body>
-  <app-root></app-root>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="home"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="gerenciamento">Gerenciamento de Produtos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="pedidos">Pedidos Recebidos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" style="color: white;" href="solicitacao">Solicitacao</a>
+                </li>
+            </ul>
+        </div>
+        <a href="home">
+            <img src=".//assets/imagens/brq_digital_solution.png" style="width: 100px; margin-right: 50px;" alt="logo brq">
+        </a>
+    </nav>
+
+
+    <app-root></app-root>
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { GerenciamentoService } from '../serviços/gerenciamentoService/gerenciamento.service';
-import { incluirProduto } from '../entidades/incluirProduto';
+import { Produtos } from '../entidades/Produtos';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-gerenciamento',
@@ -8,18 +9,19 @@ import { incluirProduto } from '../entidades/incluirProduto';
   styleUrls: ['./gerenciamento.component.css']
 })
 export class GerenciamentoComponent implements OnInit {
+  delProd: Produtos;
+  prod: Produtos;
+  prodEdit: Produtos;
 
-  prod: incluirProduto;
-  prodEdit: incluirProduto;
-
-  produtos:incluirProduto[];
+  produtos:Produtos[];
   
   constructor(private prodServ: GerenciamentoService, ) { }
 
   ngOnInit() {
-    this.prod = new incluirProduto();
+    this.delProd = new Produtos();
+    this.prod = new Produtos();
     this.produtoList();
-    this.prodEdit = new incluirProduto();
+    this.prodEdit = new Produtos();
     this.refreshProduto();
   }
 
@@ -31,6 +33,7 @@ export class GerenciamentoComponent implements OnInit {
         produtos => this.adcProduto = produtos,
         error => console.error(error));
         alert("Salvo com Sucesso");
+        this.refreshProduto();
       }else{
         alert("Verifique os Campos");
       }
@@ -38,8 +41,22 @@ export class GerenciamentoComponent implements OnInit {
      
     }
 
-
-    adcProduto(produtos: incluirProduto){
+    //abre o modal de confirmação para deletar
+    excluir(delProd: Produtos){
+      this.prod.idProduto = delProd.idProduto;
+    }
+  
+  //confirmação do delete
+    sim(delProd: Produtos){
+      this.prodServ.deletarProduto(this.prod.idProduto)
+      this.refreshProduto();
+          alert("Excluido com Sucesso")        
+        
+  
+    }
+    
+//função de adc produto na table apos inserir
+    adcProduto(produtos: Produtos){
       this.produtos.push(produtos);
       this.refreshProduto();
     }
@@ -64,11 +81,11 @@ export class GerenciamentoComponent implements OnInit {
 
   //validar campos de cadastro
   validarCampos(){
-    return this.prod.nomeProduto === '' ||
-          this.prod.qntProduto === null ||
-          this.prod.sexo === '' ||
-          this.prod.tamanho === '' ||
-          this.prod.valorUnitario === null;
+    return this.prod.nomeProd === '' ||
+          this.prod.qntProd === null ||
+          this.prod.genero === '' ||
+          this.prod.modeloProd === '' ||
+          this.prod.valorUnit === null;
   }
 
 
@@ -76,11 +93,11 @@ export class GerenciamentoComponent implements OnInit {
 
   limparCampos(){
     this.prod.idProduto = 0;
-    this.prod.nomeProduto = '';
-    this.prod.qntProduto = null;
-    this.prod.valorUnitario = null;
-    this.prod.sexo = null;
-    this.prod.tamanho = null;
+    this.prod.nomeProd = '';
+    this.prod.qntProd = null;
+    this.prod.valorUnit = null;
+    this.prod.genero = null;
+    this.prod.modeloProd = null;
     this.refreshProduto();
   }
 
@@ -90,20 +107,19 @@ export class GerenciamentoComponent implements OnInit {
     this.limparCampos();
   }
 
-  editarProduto(prodEdit: incluirProduto){
+  editarProduto(prodEdit: Produtos){
     this.prod.idProduto = prodEdit.idProduto;
-    this.prod.nomeProduto = prodEdit.nomeProduto;
-    this.prod.qntProduto = prodEdit.qntProduto;
-    this.prod.sexo = prodEdit.sexo;
-    this.prod.tamanho = prodEdit.tamanho;
-    this.prod.valorUnitario = prodEdit.valorUnitario;
+    this.prod.nomeProd = prodEdit.nomeProd;
+    this.prod.qntProd = prodEdit.qntProd;
+    this.prod.genero = prodEdit.genero;
+    this.prod.modeloProd = prodEdit.modeloProd;
+    this.prod.valorUnit = prodEdit.valorUnit;
   
     this.prod = prodEdit;
 
   this.refreshProduto();
   }
 
-  sim(){
-  alert("Deletado com sucesso") 
-  }
+ 
+ 
 }

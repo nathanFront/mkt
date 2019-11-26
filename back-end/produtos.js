@@ -11,18 +11,18 @@ router.use(function timeLog(req, res, next) {
 });
 
 //inserir/atualizar produtos
-router.post('/produtos/novos', function (req, res) {
+router.post('/produtos/novos', function(req, res) {
 
     var connection = mysql.createConnection(config);
 
-    var sql = 'CALL insertProdutos(?,?,?,?,?,?)';
-    connection.query(sql, [req.body.idProduto, req.body.nomeProduto, req.body.qntProduto, req.body.valorUnitario, req.body.tamanho, req.body.sexo], function (error, results, fields) {
+    var sql = 'CALL insertProduto(?,?,?,?,?,?,?)';
+    connection.query(sql, [req.body.idProduto, req.body.nomeProd, req.body.qntProd, req.body.valorUnit, req.body.genero, req.body.tipoProd, req.body.modeloProd], function(error, results, fields) {
         if (error) {
             return console.error(error.message);
         }
         res.send(results);
     })
-    connection.on('error', function (err) {
+    connection.on('error', function(err) {
         console.log("[mysql erro]", err);
 
     });
@@ -31,35 +31,55 @@ router.post('/produtos/novos', function (req, res) {
 
 //insert de SOLICITAÇÃO
 
-router.post('/solicitacao/nova', function (req, res) {
+router.post('/pedidos/novos', function(req, res) {
 
     var connection = mysql.createConnection(config);
 
-    var sql = 'CALL solicitacaoPedidos(?,?,?,?,?,?,?,?)';
-    connection.query(sql, [req.body.nomeSolicitante, req.body.nomeProduto, req.body.qntProduto, req.body.centroCusto, req.body.codProjeto, req.body.valorUnitario, req.body.tamanho, req.body.sexo], function (error, results, fields) {
+    var sql = 'CALL insertPedidos(?,?,?,?,?,?,?,?)';
+    connection.query(sql, [req.body.idPedido, req.body.nomeGestor, req.body.nomeSolic, req.body.codProj, req.body.centroCust, req.body.qntProduto, req.body.genero, req.body.modelo], function(error, results, fields) {
         if (error) {
             return console.error(error.message);
         }
         res.send(results);
     })
-    connection.on('error', function (err) {
+    connection.on('error', function(err) {
         console.log("[mysql erro]", err);
 
     });
     connection.end();
 
-});
 
+});
+//DELETE PRODUTOS
+
+router.delete('/delete/:idProduto', function(req, res) {
+    var connection = mysql.createConnection(config);
+
+    var sql = 'CALL deleteProdutos(?)';
+
+    connection.query(sql, [req.body.idProduto], function(error, results) {
+        if (error) {
+            return console.error(error.message);
+        }
+        debugger;
+        res.send(results);
+        console.log(results);
+    })
+    connection.on('error', function(err) {
+        console.log("[mysql erro", err);
+    });
+    connection.end();
+})
 
 
 //GET
 
 //all produtos
 
-router.get('/produtos', function (req, res) {
+router.get('/produtos', function(req, res) {
 
     var connection = mysql.createConnection(config);
-    var sql = 'CALL getProdutos()';
+    var sql = 'CALL getallprodutos()';
     connection.query(sql, (error, results, fields) => {
         if (error) {
             return console.error(error.message);
@@ -70,46 +90,11 @@ router.get('/produtos', function (req, res) {
     connection.end();
 });
 
-//GEL FOR ID
-//EX PRODUTO/1
-router.get('/produtos/:id', function (req, res) {
+
+router.get('/pedidos', function(req, res) {
 
     var connection = mysql.createConnection(config);
-    var sql = 'CALL getProdutos(?)';
-    connection.query(sql, [req.params.idProduto], function (error, results, fields) {
-        if (error) {
-            return console.error(error.message);
-        }
-        res.send(results);
-    });
-
-    connection.end();
-});
-
-
-//Delete FOR ID
-//PRODUTOS/1
-router.delete('produtos/idproduto/:idProduto', function () {
-    var sql = 'CALL deleteProdutos' + req.params.idProduto;
-    console.log(req.params.idProduto);
-
-    connection.query(sql, function (err, result) {
-        if (!err) {
-            console.log("Produto apagado com sucesso");
-
-        } else {
-            console.log("error: produto nao apagado");
-
-        }
-    })
-
-
-});
-
-router.get('/solicitacao', function (req, res) {
-
-    var connection = mysql.createConnection(config);
-    var sql = 'CALL getSolicitacao()';
+    var sql = 'CALL getallpedidos()';
     connection.query(sql, (error, results, fields) => {
         if (error) {
             return console.error(error.message);
@@ -119,7 +104,7 @@ router.get('/solicitacao', function (req, res) {
 
     connection.end();
 });
+
+
+
 module.exports = router;
-
-
-

@@ -5,11 +5,12 @@
             <th scope="col">#</th>
             <th scope="col">Nome do Gestor</th>
             <th scope="col">Nome do Solicitante</th>
-            <th scope="col">Centro de Custo</th>
             <th scope="col">Codigo do Proejeto</th>
+            <th scope="col">Centro de Custo</th>
             <th scope="col">Quantidade</th>
             <th scope="col">Genero</th>
             <th scope="col">Modelo</th>
+            <th scope="col">Info</th>
         </tr>
     </thead>
     <tbody>
@@ -18,10 +19,41 @@
             <td>{{pedido.nomeGestor}}</td>
             <td>{{pedido.nomeSolic}}</td>
             <td>{{pedido.codProj}}</td>
-            <td>{{pedido.centroCusto}}</td>
+            <td>{{pedido.centroCust}}</td>
             <td>{{pedido.qntProduto}}</td>
             <td>{{pedido.genero}}</td>
             <td>{{pedido.modelo}}</td>
+            <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deletarProdutoModal" (click)="info">Info</button></td>
         </tr>
     </tbody>
 </table>
+
+
+<!-- Modal DELETAR -->
+<div class="modal fade" id="deletarProdutoModal" tabindex="-1" role="dialog" aria-labelledby="deletarProdutoModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deletarProdutoModal">Status do Pedido</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group col-md-4" style="margin: auto;">
+                    <label for="inputEstado">Status</label>
+                    <select id="inputEstado" class="form-control">
+                              <option selected>Selecione...</option>
+                              <option>Entregue</option>
+                              <option>Reprovado</option>
+                              <option>Andamento</option>
+                            </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="cancelar()">Cancelar</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="atualizar">Atualizar</button>
+            </div>
+        </div>
+    </div>
+</div>

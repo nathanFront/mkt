@@ -57,7 +57,7 @@ router.delete('/delete/:idProduto', function(req, res) {
 
     var sql = 'CALL deleteProdutos(?)';
 
-    connection.query(sql, [req.body.idProduto], function(error, results) {
+    connection.query(sql, [req.params.idProduto], function(error, results) {
         if (error) {
             return console.error(error.message);
         }
@@ -105,6 +105,18 @@ router.get('/pedidos', function(req, res) {
     connection.end();
 });
 
+//GET por nome produto
+router.get('/consulta/:nomeProd', function(req, res) {
+    var connection = mysql.createConnection(config);
+    var sql = 'CALL getProdutoName(?)';
+    connection.query(sql, [req.params.nomeProd], (error, results, fields) => {
+        if (error) {
+            return console.error(error.message);
+        }
+        res.send(results);
+    });
+    connection.end();
+})
 
 
 module.exports = router;

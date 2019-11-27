@@ -26,4 +26,13 @@ export class PedidosComponent implements OnInit {
       error => console.log(error));
   
   }
+
+  atualizar(){
+    console.log("atualizado")
+  }
+
+  cancelar(){
+    console.log("retonar a tela inicial");
+    
+  }
 }

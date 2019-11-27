@@ -13,13 +13,28 @@ export class HomeComponent implements OnInit {
 
   produtoBRQ: Produtos;
   produtos: Produtos[];
-  
+
+   prodBusc: Produtos;
   constructor(private prodServ:GerenciamentoService) { }
 
   ngOnInit() {
+    this.prodBusc = new Produtos;
     this.produtoBRQ = new Produtos();
     this.produtosList();
   }
+
+  consultarProd(){
+    debugger;    
+      if(this.prodBusc.nomeProd){
+        this.prodServ.consultarNomeProduto(this.prodBusc.nomeProd)
+        .subscribe(
+          busc => this.produtos = busc[0],
+          error => console.log(error))
+      }else{
+        this.produtosList();
+      }
+    }
+  
 
   produtosList(){
     this.prodServ.buscarTodosProdutos()

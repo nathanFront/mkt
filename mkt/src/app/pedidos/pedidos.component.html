@@ -23,7 +23,7 @@
             <td>{{pedido.qntProduto}}</td>
             <td>{{pedido.genero}}</td>
             <td>{{pedido.modelo}}</td>
-            <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deletarProdutoModal" (click)="info">Info</button></td>
+            <td><button type="button" class="btn btn-info" data-toggle="modal" data-target="#deletarProdutoModal">Info</button></td>
         </tr>
     </tbody>
 </table>
@@ -41,18 +41,18 @@
             </div>
             <div class="modal-body">
                 <div class="form-group col-md-4" style="margin: auto;">
-                    <label for="inputEstado">Status</label>
+                    <label for="inputStatus">Status</label>
                     <select id="inputEstado" class="form-control">
                               <option selected>Selecione...</option>
-                              <option>Entregue</option>
-                              <option>Reprovado</option>
-                              <option>Andamento</option>
+                              <option value="1">Entregue</option>
+                              <option value="2">Andamento</option>
+                              <option value="3">Reprovado</option>
                             </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="cancelar()">Cancelar</button>
-                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="atualizar">Atualizar</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal" (click)="atualizar()">Atualizar</button>
             </div>
         </div>
     </div>

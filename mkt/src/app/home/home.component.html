@@ -1,8 +1,8 @@
 <h2 class="home">Bem Vindo ao Portal do Marketing<br>Home</h2>
 <div class="row" style="margin-left: 25px;  margin-top: 13px;">
     <div class="col">
-        <input type="text" class="form-control" placeholder="Consultar Produto">
-        <button class="btn btn-dark" type="button">Buscar</button>
+        <input type="text" class="form-control" [(ngModel)]="prodBusc.nomeProd" placeholder="Consultar Produto">
+        <button class="btn btn-dark" type="button" (click)="consultarProd()">Buscar</button>
     </div>
 </div>
 <table class="table table-hover">

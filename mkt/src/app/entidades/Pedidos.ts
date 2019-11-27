@@ -6,5 +6,6 @@ export class Solicitacao {
     centroCusto: string;
     qntProduto: string;
     genero: string;
-    modelo: string
+    modelo: string;
+    status: number
 }
